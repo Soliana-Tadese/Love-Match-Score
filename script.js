@@ -1,14 +1,12 @@
-// =========================
-// GET HTML ELEMENTS
-// =========================
+
 
 const loveForm = document.getElementById("loveForm");
 
 const firstNameInput =
-    document.getElementById("firstName");
+    document.getElementById("YourName");
 
 const secondNameInput =
-    document.getElementById("secondName");
+    document.getElementById("Your Lover's Name");
 
 const errorMessage =
     document.getElementById("errorMessage");
@@ -47,17 +45,13 @@ const heartContainer =
     document.getElementById("heartContainer");
 
 
-// =========================
-// CREATE RANDOM SCORE
-// =========================
-
 function getScore() {
 
-    // Generate a random number between 50 and 100.
+   
     const overall =
         Math.floor(Math.random() * 51) + 50;
 
-    // Generate category scores.
+   
     const emotional =
         Math.floor(Math.random() * 51) + 50;
 
@@ -75,10 +69,6 @@ function getScore() {
     };
 }
 
-
-// =========================
-// GET LOVE MESSAGE
-// =========================
 
 function getScoreMessage(score) {
 
@@ -102,9 +92,6 @@ function getScoreMessage(score) {
 }
 
 
-// =========================
-// SHOW GAUGE
-// =========================
 
 function showGauge(score) {
 
@@ -113,7 +100,7 @@ function showGauge(score) {
     const needle =
         document.querySelector(".needle");
 
-    // Reset needle before every calculation.
+  
     needle.style.transform =
         "rotate(-35deg)";
 
@@ -135,7 +122,7 @@ function showGauge(score) {
     }, 20);
 
 
-    // Move the needle according to score.
+ 
     const rotation =
         -35 + ((score - 50) / 50) * 70;
 
@@ -148,18 +135,16 @@ function showGauge(score) {
 }
 
 
-// =========================
-// SHOW CATEGORY SCORES
-// =========================
+
 
 function showCategoryScores(scores) {
 
-    // Reset bars.
+   
     emotionalBar.style.width = "0%";
     trustBar.style.width = "0%";
     funBar.style.width = "0%";
 
-    // Show numbers.
+    
     emotionalValue.textContent =
         `${scores.emotional}%`;
 
@@ -170,7 +155,7 @@ function showCategoryScores(scores) {
         `${scores.fun}%`;
 
 
-    // Animate bars.
+   
     setTimeout(() => {
 
         emotionalBar.style.width =
@@ -186,13 +171,11 @@ function showCategoryScores(scores) {
 }
 
 
-// =========================
-// POP HEARTS UPWARD
-// =========================
+
 
 function blowHearts() {
 
-    // Number of hearts created per click.
+   
     const heartCount = 25;
 
     for (let i = 0; i < heartCount; i++) {
@@ -207,22 +190,20 @@ function blowHearts() {
         heart.textContent = "♥";
 
 
-        // Random horizontal position.
         heart.style.left =
             `${Math.random() * 100}%`;
 
 
-        // Random heart size.
+      
         heart.style.fontSize =
             `${15 + Math.random() * 25}px`;
 
 
-        // Different animation speed.
         heart.style.animationDuration =
             `${2 + Math.random() * 2}s`;
 
 
-        // Small delay so hearts don't appear together.
+      
         heart.style.animationDelay =
             `${Math.random() * 0.5}s`;
 
@@ -230,7 +211,6 @@ function blowHearts() {
         heartContainer.appendChild(heart);
 
 
-        // Remove heart after animation.
         setTimeout(() => {
 
             heart.remove();
@@ -240,15 +220,13 @@ function blowHearts() {
 }
 
 
-// =========================
-// CALCULATE LOVE SCORE
-// =========================
+
 
 loveForm.addEventListener(
     "submit",
     function(event) {
 
-        // Prevent page refresh.
+        
         event.preventDefault();
 
 
@@ -259,7 +237,7 @@ loveForm.addEventListener(
             secondNameInput.value.trim();
 
 
-        // Check if names are empty.
+       
         if (!firstName || !secondName) {
 
             errorMessage.textContent =
@@ -269,37 +247,34 @@ loveForm.addEventListener(
         }
 
 
-        // Clear error.
+        
         errorMessage.textContent = "";
 
 
-        // Get a NEW random score.
         const scores = getScore();
 
 
-        // Display names.
+       
         coupleNames.textContent =
             `${firstName} + ${secondName}`;
 
 
-        // Display result.
+       
         result.classList.remove("hidden");
 
 
-        // Display message.
+     
         scoreMessage.textContent =
             getScoreMessage(scores.overall);
 
 
-        // Animate gauge.
+      
         showGauge(scores.overall);
 
 
-        // Animate category bars.
         showCategoryScores(scores);
 
 
-        // POP HEARTS UPWARD.
         blowHearts();
     }
 );
