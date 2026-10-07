@@ -1,0 +1,490 @@
+/* =========================
+   BASIC RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+    background: #450914;
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+    width: 100%;
+    max-width: 500px;
+
+    padding: 35px 25px;
+
+    background: linear-gradient(
+        145deg,
+        #ffdce7,
+        #ffc5d8
+    );
+
+    border-radius: 28px;
+
+    color: #5b1025;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+h1 {
+    text-align: center;
+
+    font-family: "Dancing Script", cursive;
+
+    font-size: 55px;
+
+    color: #9e183f;
+}
+
+.subtitle {
+    text-align: center;
+
+    margin-top: 5px;
+
+    color: #8c3652;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+.input-group {
+    position: relative;
+
+    margin-top: 25px;
+}
+
+.input-group input {
+    width: 100%;
+
+    height: 58px;
+
+    padding: 18px 15px 5px;
+
+    border: 2px solid transparent;
+
+    border-radius: 14px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.85);
+
+    color: #5b1025;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #c5184d;
+
+    background: white;
+}
+
+.input-group label {
+    position: absolute;
+
+    left: 15px;
+    top: 18px;
+
+    color: #92506a;
+
+    pointer-events: none;
+
+    transition: 0.2s;
+}
+
+/* Floating label */
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    top: 6px;
+
+    font-size: 11px;
+
+    color: #b51c4a;
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+#errorMessage {
+    min-height: 22px;
+
+    margin-top: 10px;
+
+    text-align: center;
+
+    color: #a50032;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   CALCULATE BUTTON
+========================= */
+
+#calculateButton {
+    width: 100%;
+
+    margin-top: 5px;
+
+    padding: 16px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: #a81745;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    box-shadow:
+        0 8px 20px rgba(168, 23, 69, 0.25);
+}
+
+#calculateButton:hover {
+    background: #861337;
+
+    transform: translateY(-2px);
+}
+
+#calculateButton:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result {
+    text-align: center;
+
+    margin-top: 30px;
+}
+
+.result.hidden {
+    display: none;
+}
+
+.result h2 {
+    color: #891337;
+
+    margin-bottom: 5px;
+}
+
+.result h3 {
+    font-family: "Dancing Script", cursive;
+
+    font-size: 35px;
+
+    color: #a81745;
+
+    margin: 15px 0 20px;
+}
+
+
+/* =========================
+   HEART GAUGE
+========================= */
+
+.gauge-container {
+    display: flex;
+
+    justify-content: center;
+
+    margin: 30px 0;
+}
+
+.heart-gauge {
+    width: 130px;
+    height: 115px;
+
+    position: relative;
+
+    transform: rotate(-45deg);
+
+    background: #e63967;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 10px 30px rgba(190, 20, 70, 0.3);
+}
+
+.heart-gauge::before,
+.heart-gauge::after {
+    content: "";
+
+    position: absolute;
+
+    width: 130px;
+    height: 115px;
+
+    background: #e63967;
+
+    border-radius: 50%;
+}
+
+.heart-gauge::before {
+    top: -65px;
+    left: 0;
+}
+
+.heart-gauge::after {
+    top: 0;
+    left: 65px;
+}
+
+
+/* Score number */
+
+.gauge-number {
+    position: absolute;
+
+    z-index: 5;
+
+    transform: rotate(45deg);
+
+    width: 130px;
+
+    top: 43px;
+    left: 0;
+
+    text-align: center;
+
+    color: white;
+
+    font-size: 27px;
+
+    font-weight: 700;
+}
+
+
+/* Gauge needle */
+
+.needle {
+    position: absolute;
+
+    z-index: 6;
+
+    width: 4px;
+
+    height: 48px;
+
+    background: white;
+
+    left: 63px;
+
+    top: 12px;
+
+    transform-origin: bottom center;
+
+    transform: rotate(-35deg);
+
+    border-radius: 10px;
+
+    transition:
+        transform 1.5s ease-out;
+}
+
+
+/* =========================
+   CATEGORY BARS
+========================= */
+
+.categories {
+    text-align: left;
+
+    margin-top: 20px;
+}
+
+.category {
+    margin-bottom: 15px;
+}
+
+.category-title {
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 12px;
+
+    margin-bottom: 6px;
+
+    color: #74142f;
+}
+
+.progress {
+    width: 100%;
+
+    height: 9px;
+
+    background: rgba(255, 255, 255, 0.7);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.progress div {
+    width: 0;
+
+    height: 100%;
+
+    background: #b51c4a;
+
+    border-radius: 20px;
+
+    transition:
+        width 1.2s ease;
+}
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+#heartContainer {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 10;
+}
+
+.floating-heart {
+    position: absolute;
+
+    bottom: -40px;
+
+    color: #ff6f9d;
+
+    font-size: 20px;
+
+    animation:
+        heartUp 3s ease-out forwards;
+}
+
+
+/* Hearts move upward */
+
+@keyframes heartUp {
+
+    0% {
+        transform:
+            translateY(0)
+            scale(0.5)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            scale(1.5)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+    .card {
+        padding: 30px 20px;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    .heart-gauge {
+        transform: rotate(-45deg) scale(0.9);
+    }
+}
+
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media (min-width: 700px) {
+
+    .card {
+        padding: 40px;
+    }
+
+    h1 {
+        font-size: 62px;
+    }
+}

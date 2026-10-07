@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Love Match Score</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Hearts will appear here -->
+    <div id="heartContainer"></div>
+
+    <main class="container">
+
+        <section class="card">
+
+            <h1>Love Match</h1>
+
+            <p class="subtitle">
+                Discover your love score ♥
+            </p>
+
+            <form id="loveForm">
+
+                <!-- First name -->
+                <div class="input-group">
+                    <input
+                        type="text"
+                        id="firstName"
+                        placeholder=" "
+                    >
+
+                    <label for="firstName">
+                        First name
+                    </label>
+                </div>
+
+                <!-- Second name -->
+                <div class="input-group">
+                    <input
+                        type="text"
+                        id="secondName"
+                        placeholder=" "
+                    >
+
+                    <label for="secondName">
+                        Second name
+                    </label>
+                </div>
+
+                <p id="errorMessage"></p>
+
+                <!-- Calculate button -->
+                <button type="submit" id="calculateButton">
+                    Calculate Love Score ♥
+                </button>
+
+            </form>
+
+            <!-- Result -->
+            <section id="result" class="result hidden">
+
+                <h2 id="coupleNames"></h2>
+
+                <!-- Heart gauge -->
+                <div class="gauge-container">
+
+                    <div class="heart-gauge">
+
+                        <div class="gauge-number">
+                            <span id="scoreNumber">0</span>%
+                        </div>
+
+                        <div class="needle"></div>
+
+                    </div>
+
+                </div>
+
+                <h3 id="scoreMessage"></h3>
+
+                <!-- Category scores -->
+                <div class="categories">
+
+                    <div class="category">
+
+                        <div class="category-title">
+                            <span>Emotional Connection</span>
+                            <span id="emotionalValue">0%</span>
+                        </div>
+
+                        <div class="progress">
+                            <div id="emotionalBar"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="category">
+
+                        <div class="category-title">
+                            <span>Trust</span>
+                            <span id="trustValue">0%</span>
+                        </div>
+
+                        <div class="progress">
+                            <div id="trustBar"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="category">
+
+                        <div class="category-title">
+                            <span>Fun / Chemistry</span>
+                            <span id="funValue">0%</span>
+                        </div>
+
+                        <div class="progress">
+                            <div id="funBar"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
